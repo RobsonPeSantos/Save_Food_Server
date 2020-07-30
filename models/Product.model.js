@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
   title: String,
   value: Number,
-  state: [],
+  state: Boolean,
   photo: String,
   availableQty: Number,
   reservationLimitPeriod: String,
