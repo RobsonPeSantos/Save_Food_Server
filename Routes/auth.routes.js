@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/User.model");
 
 // SIGN UP
-router.post("/api/user/signup", async (req, res) => {
+router.post("/user/signup", async (req, res) => {
   const { username, password } = req.body;
   if (!password || !username) {
     return res
@@ -35,7 +35,7 @@ router.post("/api/user/signup", async (req, res) => {
 });
 
 // LOGIN
-router.post("/api/user/login", (req, res, next) => {
+router.post("/user/login", (req, res, next) => {
   passport.authenticate("local", (err, userObj, failureDetails) => {
     if (err) {
       return res.status(500).json({
@@ -60,14 +60,14 @@ router.post("/api/user/login", (req, res, next) => {
 
 // LOGOUT
 
-router.post("/api/user/logout", async (req, res) => {
+router.post("/user/logout", async (req, res) => {
   req.logout();
   return res.status(200).json({ message: "Sessão encerrada!" });
 });
 
 //AUTHENTICATION
 
-router.get("api/user/loggedin", (req, res) => {
+router.get("/user/loggedin", (req, res) => {
   if (req.isAuthenticated()) {
     return res.status(200).json(req.user);
   }
