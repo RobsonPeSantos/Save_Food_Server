@@ -26,6 +26,7 @@ const userSchema = new Schema(
         startTime: Date, //use setHours() method
         endTime: Date,
       },
+      sales: []
     },
   },
   {
