@@ -73,7 +73,9 @@ router.get("/offer/:id", async (req, res) => {
     const response = await Offer.find({
       _id: id,
     });
+    console.log(response) // CONSOLE LOG TIRAR <<<<<<<<<<<<<<<<<<<<<<<
     return res.status(200).json(response);
+    
   } catch (err) {
     throw new Error(err);
   }
