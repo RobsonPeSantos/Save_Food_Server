@@ -26,7 +26,7 @@ router.post("/offer/create", async (req, res) => {
       photo,
       availableQty,
       reservationLimitPeriod,
-      //   owner: req.user._id,
+        owner: req.user._id,
     });
 
     return res.status(201).json(response);
