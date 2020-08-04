@@ -26,7 +26,7 @@ router.post("/offer/create", async (req, res) => {
       photo,
       availableQty,
       reservationLimitPeriod,
-      //   owner: req.user._id,
+      owner: req.user._id,
     });
 
     return res.status(201).json(response);
@@ -73,7 +73,9 @@ router.get("/offer/:id", async (req, res) => {
     const response = await Offer.find({
       _id: id,
     });
+    console.log(response) // CONSOLE LOG TIRAR <<<<<<<<<<<<<<<<<<<<<<<
     return res.status(200).json(response);
+    
   } catch (err) {
     throw new Error(err);
   }
