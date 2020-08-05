@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     username: String,
     password: String,
-    estabilishment: {
+    establishment: {
       companyName: String,
       category: String,
       cuisine: [], //ex - Italian, French, Brazilian
@@ -23,8 +23,8 @@ const userSchema = new Schema(
       delivery: Boolean,
       takeaway: Boolean,
       takeawayTime: {
-        startTime: Date, //use setHours() method
-        endTime: Date,
+        startTime: String, //use setHours() method
+        endTime: String,
       },
       sales: []
     },
