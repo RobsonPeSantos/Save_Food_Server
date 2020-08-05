@@ -8,6 +8,7 @@ const offerSchema = new Schema({
   photo: String,
   availableQty: Number,
   reservationLimitPeriod: Date, //datepicker
+
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User",
