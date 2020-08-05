@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const offerSchema = new Schema({
   title: String,
   value: Number,
-  active: Boolean,
+  active: { type: Boolean, default: true },
   photo: String,
   availableQty: Number,
-  reservationLimitPeriod: Date,
+  reservationLimitPeriod: Date, //datepicker
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User",
