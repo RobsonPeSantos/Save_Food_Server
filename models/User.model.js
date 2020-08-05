@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     username: String,
     password: String,
-    estabiProfilelishment: {
+    establishment: {
       companyName: String,
       category: String,
       cuisine: [], //ex - Italian, French, Brazilian
