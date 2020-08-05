@@ -7,7 +7,7 @@ const offerSchema = new Schema({
   active: Boolean,
   photo: String,
   availableQty: Number,
-  reservationLimitPeriod: Date,
+  reservationLimitPeriod: String,
   owner: {
     type: Schema.Types.ObjectId,
     ref: "User",

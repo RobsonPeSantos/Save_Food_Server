@@ -19,7 +19,7 @@ router.get("/establishment/profile/:id", async (req, res) => {
   }
 });
 
-//Update -
+//Update - Establishment
 
 router.put("/establishment/profile/update/:id", async (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
