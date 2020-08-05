@@ -13,7 +13,6 @@ router.post("/offer/create", async (req, res) => {
   const {
     title,
     value,
-    active,
     photo,
     availableQty,
     reservationLimitPeriod,
@@ -22,7 +21,6 @@ router.post("/offer/create", async (req, res) => {
     const response = await Offer.create({
       title,
       value,
-      active,
       photo,
       availableQty,
       reservationLimitPeriod,
