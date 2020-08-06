@@ -23,8 +23,11 @@ const userSchema = new Schema(
       delivery: Boolean,
       takeaway: Boolean,
       takeawayTime: {
-        startTime: String, //use setHours() method
-        endTime: String,
+        startTime: {type: String,
+          default: "12:00"},
+         //use setHours() method
+        endTime: {type: String,
+          default: "18:00"}
       },
       sales: []
     },
