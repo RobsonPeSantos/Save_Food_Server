@@ -15,6 +15,7 @@ router.get("/establishment/profile/:id", async (req, res) => {
 
     return res.status(200).json(response);
   } catch (err) {
+    console.log(err);
     throw new Error(err);
   }
 });
