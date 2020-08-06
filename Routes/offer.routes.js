@@ -53,6 +53,7 @@ router.get("/offers/:establishmentId", async (req, res) => {
     const response = await Offer.find({
       owner: { _id: req.params.establishmentId },
     });
+    return res.status(200).json(response);
     //   .populate("user")
     //   .exec();
   } catch (err) {
@@ -71,9 +72,8 @@ router.get("/offer/:id", async (req, res) => {
     const response = await Offer.find({
       _id: id,
     });
-    console.log(response) // CONSOLE LOG TIRAR <<<<<<<<<<<<<<<<<<<<<<<
+    console.log(response); // CONSOLE LOG TIRAR <<<<<<<<<<<<<<<<<<<<<<<
     return res.status(200).json(response);
-    
   } catch (err) {
     throw new Error(err);
   }
