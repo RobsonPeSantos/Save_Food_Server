@@ -29,7 +29,7 @@ router.get("/establishment/profile/:id", async (req, res) => {
   try {
     const response = await User.findOne({ _id: req.params.id });
 
-    return res.status(200).json(response);
+   res.status(200).json(response);
   } catch (err) {
     console.log(err);
     throw new Error(err);

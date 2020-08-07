@@ -9,9 +9,6 @@ const Offer = require("../models/Offer.model");
 const User = require("../models/User.model");
 
 
-
-
-
 // CREATE NEW OFFER
 router.post("/offer/create", async (req, res) => {
   const {
