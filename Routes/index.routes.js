@@ -22,4 +22,4 @@ router.post(
     }
   );
 
-  module.export = Router
+  module.exports = router
