@@ -88,6 +88,9 @@ app.use("/api", userRoutes);
 const offerRoutes = require("./Routes/offer.routes");
 app.use("/api", offerRoutes);
 
+const indexRoutes = require("./Routes/index.routes")
+app.use("/api", indexRoutes);
+
 app.use((req, res, next) => {
   res.sendFile(__dirname + "/public/index.html");
 });
