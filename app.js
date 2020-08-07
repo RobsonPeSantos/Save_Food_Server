@@ -99,7 +99,11 @@ const indexRoutes = require("./Routes/index.routes")
 app.use("/api", indexRoutes);
 
 app.use((req, res, next) => {
-  res.sendFile(__dirname + "/public/index.html");
+ const hostUrl = req.get("host")
+ if (hostUrl.includes("/api") === true) {
+  return res.sendFile(__dirname + "/public/index.html");
+ }
+return
 });
 
 module.exports = app;
