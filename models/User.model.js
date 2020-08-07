@@ -11,6 +11,7 @@ const userSchema = new Schema(
       cuisine: [], //ex - Italian, French, Brazilian
       phone: String,
       email: String,
+      photo: String,
       address: {
         street: String,
         number: Number,
