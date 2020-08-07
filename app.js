@@ -20,7 +20,7 @@ require("./configs/passport");
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
-  .connect("mongodb://localhost/save-food", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
   })
   .then((x) => {
@@ -44,12 +44,6 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000"], // <== this will be the URL of our React app (it will be running on port 3000)
-  })
-);
 
 // ADD SESSION SETTINGS HERE:
 
@@ -65,6 +59,7 @@ app.use(
 // USE passport.initialize() and passport.session() HERE:
 
 app.use(passport.initialize());
+app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.session());
 
 // default value for title local
@@ -75,7 +70,7 @@ app.locals.title = "Express - Generated with IronGenerator";
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000"],
+    origin: [process.env.CORS_ORIGIN],
   })
 );
 
@@ -92,5 +87,9 @@ app.use("/api", userRoutes);
 
 const offerRoutes = require("./Routes/offer.routes");
 app.use("/api", offerRoutes);
+
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 module.exports = app;

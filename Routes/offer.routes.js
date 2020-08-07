@@ -8,6 +8,22 @@ const auth = require("../Routes/auth.routes");
 const Offer = require("../models/Offer.model");
 const User = require("../models/User.model");
 
+const uploader = require("../configs/cloudinary");
+
+// FILE UPLOAD - Offer attachment
+router.post(
+  "/offer/upload-attachment",
+  uploader.single("attachment"),
+  (req, res) => {
+    if (!req.file) {
+      return res.status(500).json({ message: "No file uploaded!" });
+    }
+
+    return res.status(200).json({ attachmentUrl: req.file.secure_url });
+  }
+);
+
+
 // CREATE NEW OFFER
 router.post("/offer/create", async (req, res) => {
   const {
@@ -53,6 +69,7 @@ router.get("/offers/:establishmentId", async (req, res) => {
     const response = await Offer.find({
       owner: { _id: req.params.establishmentId },
     });
+    return res.status(200).json(response);
     //   .populate("user")
     //   .exec();
   } catch (err) {
@@ -71,9 +88,8 @@ router.get("/offer/:id", async (req, res) => {
     const response = await Offer.find({
       _id: id,
     });
-    console.log(response) // CONSOLE LOG TIRAR <<<<<<<<<<<<<<<<<<<<<<<
+    console.log(response); // CONSOLE LOG TIRAR <<<<<<<<<<<<<<<<<<<<<<<
     return res.status(200).json(response);
-    
   } catch (err) {
     throw new Error(err);
   }
