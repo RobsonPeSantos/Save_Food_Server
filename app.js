@@ -17,6 +17,8 @@ const passport = require("passport");
 
 require("./configs/passport");
 
+
+
 // IF YOU STILL DIDN'T, GO TO 'configs/passport.js' AND UN-COMMENT OUT THE WHOLE FILE
 
 mongoose
@@ -45,6 +47,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+console.log(process.env.CORS_ORIGIN)
+// ADD CORS SETTINGS HERE TO ALLOW CROSS-ORIGIN INTERACTION:
+app.use(
+
+  cors({
+    credentials: true,
+    origin: process.env.CORS_ORIGIN,
+  })
+);
+
 // ADD SESSION SETTINGS HERE:
 
 app.use(
@@ -65,14 +77,9 @@ app.use(passport.session());
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
 
-// ADD CORS SETTINGS HERE TO ALLOW CROSS-ORIGIN INTERACTION:
 
-app.use(
-  cors({
-    credentials: true,
-    origin: [process.env.CORS_ORIGIN],
-  })
-);
+
+
 
 // ROUTES MIDDLEWARE STARTS HERE:
 
@@ -87,6 +94,9 @@ app.use("/api", userRoutes);
 
 const offerRoutes = require("./Routes/offer.routes");
 app.use("/api", offerRoutes);
+
+const indexRoutes = require("./Routes/index.routes")
+app.use("/api", indexRoutes);
 
 app.use((req, res, next) => {
   res.sendFile(__dirname + "/public/index.html");

@@ -8,20 +8,8 @@ const auth = require("../Routes/auth.routes");
 const Offer = require("../models/Offer.model");
 const User = require("../models/User.model");
 
-const uploader = require("../configs/cloudinary");
 
-// FILE UPLOAD - Offer attachment
-router.post(
-  "/offer/upload-attachment",
-  uploader.single("attachment"),
-  (req, res) => {
-    if (!req.file) {
-      return res.status(500).json({ message: "No file uploaded!" });
-    }
 
-    return res.status(200).json({ attachmentUrl: req.file.secure_url });
-  }
-);
 
 
 // CREATE NEW OFFER
